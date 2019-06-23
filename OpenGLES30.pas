@@ -26,26 +26,6 @@ interface
 uses
   System.SysUtils;
 
-{type
-  GLbyte=ShortInt;
-  GLclampf=Single;
-  GLfixed=Integer;
-  GLshort=SmallInt;
-  GLushort=Word;
-  GLsync=Pointer;
-  GLint64=Int64;
-  GLuint64=UInt64;
-  GLenum=Cardinal;
-  GLuint=Cardinal;
-  GLchar=byte;
-  GLfloat=Single;
-  GLsizeiptr=NativeInt;
-  GLintptr=NativeInt;
-  GLbitfield=Cardinal;
-  GLint=Integer;
-  GLboolean=Boolean;
-  GLsizei=Integer;
-  GLubyte=byte;}
 const
   OpenGLES3Lib={$ifdef windows}'libGLESv3.dll'{$else}'libGLESv3.so'{$endif};
 
@@ -491,8 +471,6 @@ procedure glVertexAttrib4fv(index:Cardinal;const v:PSingle);{$IFDEF windows}stdc
 procedure glVertexAttribPointer(index:Cardinal;size:Integer;&type:Cardinal;normalized:boolean;stride:Integer;const pointer:Pointer);{$IFDEF windows}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glViewport(x,y,width,height:Integer);{$IFDEF windows}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 
-
-  //GLhalf=Word;
 const
   GL_READ_BUFFER=$0C02;
   GL_UNPACK_ROW_LENGTH=$0CF2;
