@@ -27,7 +27,7 @@ uses
   System.SysUtils;
 
 const
-  OpenGLES3Lib={$ifdef windows}'libGLESv3.dll'{$else}'libGLESv3.so'{$endif};
+  OpenGLES3Lib={$IFDEF MSWINDOWS}'libGLESv3.dll'{$ELSE}'libGLESv3.so'{$ENDIF};
 
   GL_DEPTH_BUFFER_BIT=$00000100;
   GL_STENCIL_BUFFER_BIT=$00000400;
