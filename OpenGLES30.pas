@@ -26,8 +26,11 @@ interface
 uses
   System.SysUtils;
 
+{$IFDEF ANDROID}
 type
-  {$IFDEF ANDROID}PAnsiChar=MarshaledAString;{$ENDIF}
+  PAnsiChar=MarshaledAString;
+  PPAnsiChar=^PAnsiChar;
+{$ENDIF}
 
 const
   OpenGLES3Lib={$IFDEF MSWINDOWS}'libGLESv3.dll'{$ELSE}'libGLESv3.so'{$ENDIF};
@@ -474,7 +477,7 @@ procedure glVertexAttrib4fv(index:Cardinal;const v:PSingle);{$IFDEF MSWINDOWS}st
 procedure glVertexAttribPointer(index:Cardinal;size:Integer;&type:Cardinal;normalized:boolean;stride:Integer;const pointer:Pointer);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glViewport(x,y,width,height:Integer);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 
-const
+(*const
   GL_READ_BUFFER=$0C02;
   GL_UNPACK_ROW_LENGTH=$0CF2;
   GL_UNPACK_SKIP_ROWS=$0CF3;
@@ -901,6 +904,7 @@ procedure glInvalidateSubFramebuffer(target:Cardinal;numAttachments:Integer;cons
 procedure glTexStorage2D(target:Cardinal;levels:Integer;internalformat:Cardinal;width,height:Integer);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glTexStorage3D(target:Cardinal;levels:Integer;internalformat:Cardinal;width,height,depth:Integer);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glGetInternalformativ(target,internalformat,pname:Cardinal;bufSize:Integer;params:PInteger);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
+*)
 
 implementation
 
