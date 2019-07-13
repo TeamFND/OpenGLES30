@@ -26,6 +26,9 @@ interface
 uses
   System.SysUtils;
 
+type
+  {$IFDEF ANDROID}PAnsiChar=MarshaledAString;{$ENDIF}
+
 const
   OpenGLES3Lib={$IFDEF MSWINDOWS}'libGLESv3.dll'{$ELSE}'libGLESv3.so'{$ENDIF};
 
