@@ -24,12 +24,14 @@ unit OpenGLES30;
 interface
 
 uses
-  System.SysUtils;
+  SysUtils;
 
-{$IFDEF ANDROID}
-type
-  PAnsiChar=MarshaledAString;
-  PPAnsiChar=^PAnsiChar;
+{$IFDEF DCC}
+  {$IFDEF ANDROID}
+  type
+    PAnsiChar=MarshaledAString;
+    PPAnsiChar=^PAnsiChar;
+  {$ENDIF}
 {$ENDIF}
 
 const
@@ -336,7 +338,7 @@ const
   GL_INVALID_FRAMEBUFFER_OPERATION=$0506;
 procedure glActiveTexture(texture:Cardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glAttachShader(&program,shader:Cardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
-procedure glBindAttribLocation(&program,index:Cardinal;const [Ref] name:PAnsiChar);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
+procedure glBindAttribLocation(&program,index:Cardinal;const name:PAnsiChar);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glBindBuffer(target,buffer:Cardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glBindFramebuffer(target,framebuffer:Cardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glBindRenderbuffer(target,renderbuffer:Cardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
