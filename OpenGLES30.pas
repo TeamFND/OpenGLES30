@@ -35,7 +35,7 @@ uses
 {$ENDIF}
 
 const
-  OpenGLES3Lib={$IFDEF MSWINDOWS}'libGLESv3.dll'{$ELSE}'libGLESv3.so'{$ENDIF};
+  OpenGLES3Lib={$IFDEF MSWINDOWS}'libGLESv2.dll'{$ELSE}'libGLESv3.so'{$ENDIF};
 
   GL_DEPTH_BUFFER_BIT=$00000100;
   GL_STENCIL_BUFFER_BIT=$00000400;
@@ -348,7 +348,7 @@ procedure glBlendEquation(mode:Cardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;
 procedure glBlendEquationSeparate(modeRGB,modeAlpha:Cardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glBlendFunc(sfactor,dfactor:Cardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glBlendFuncSeparate(sfactorRGB,dfactorRGB,sfactorAlpha,dfactorAlpha:Cardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
-procedure glBufferData(target:Cardinal;size:NativeInt;const data:Pointer;usage:Cardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
+procedure glBufferData(target:Cardinal;size:NativeInt;data:Pointer;usage:Cardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glBufferSubData(target:Cardinal;offset:NativeInt;size:NativeInt;const data:Pointer);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 function glCheckFramebufferStatus(target:Cardinal):Cardinal;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glClear(mask:Cardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
@@ -385,7 +385,7 @@ procedure glFlush();{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external Open
 procedure glFramebufferRenderbuffer(target,attachment,renderbuffertarget,renderbuffer:Cardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glFramebufferTexture2D(target,attachment,textarget,texture:Cardinal;level:Integer);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glFrontFace(mode:Cardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
-procedure glGenBuffers(n:Integer;buffers:PCardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
+procedure glGenBuffers(n:Integer;out buffers:Cardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glGenerateMipmap(target:Cardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glGenFramebuffers(n:Integer;framebuffers:PCardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glGenRenderbuffers(n:Integer;renderbuffers:PCardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
@@ -831,8 +831,8 @@ procedure glFramebufferTextureLayer(target,attachment,texture:Cardinal;level,lay
 function glMapBufferRange(target:Cardinal;offset,length:NativeInt;access:Cardinal):Pointer;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glFlushMappedBufferRange(target:Cardinal;offset,length:NativeInt);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glBindVertexArray(&array:Cardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
-procedure glDeleteVertexArrays(n:Integer;const arrays:PCardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
-procedure glGenVertexArrays(n:Integer;arrays:PCardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
+procedure glDeleteVertexArrays(n:Integer;var arrays:Cardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
+procedure glGenVertexArrays(n:Integer;out arrays:Cardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 function glIsVertexArray(&array:Cardinal):Boolean;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glGetIntegeri_v(target,index:Cardinal;data:PInteger);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glBeginTransformFeedback(primitiveMode:Cardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
