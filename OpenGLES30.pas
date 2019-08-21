@@ -389,7 +389,7 @@ procedure glGenBuffers(n:Integer;out buffers:Cardinal);{$IFDEF MSWINDOWS}stdcall
 procedure glGenerateMipmap(target:Cardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glGenFramebuffers(n:Integer;framebuffers:PCardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glGenRenderbuffers(n:Integer;renderbuffers:PCardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
-procedure glGenTextures(n:Integer;textures:PCardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
+procedure glGenTextures(n:Integer;out textures:Cardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glGetActiveAttrib(&program,index:Cardinal;bufSize:Integer;length,size:PInteger;&type:PCardinal;name:PAnsiChar);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glGetActiveUniform(&program,index:Cardinal;bufSize:Integer;length,size:PInteger;&type:PCardinal;name:PAnsiChar);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glGetAttachedShaders(&program:Cardinal;maxCount:Integer;count:PInteger;shaders:PCardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
@@ -403,8 +403,8 @@ procedure glGetIntegerv(pname:Cardinal;data:PInteger);{$IFDEF MSWINDOWS}stdcall;
 procedure glGetProgramiv(&program,pname:Cardinal;params:PInteger);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glGetProgramInfoLog(&program:Cardinal;bufSize:Integer;length:PInteger;infoLog:PAnsiChar);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glGetRenderbufferParameteriv(target,pname:Cardinal;params:PInteger);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
-procedure glGetShaderiv(shader,pname:Cardinal;params:PInteger);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
-procedure glGetShaderInfoLog(shader:Cardinal;bufSize:Integer;length,infoLog:PInteger);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
+procedure glGetShaderiv(shader,pname:Cardinal;var params);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
+procedure glGetShaderInfoLog(shader:Cardinal;bufSize:Integer;var length:Integer;var infoLog);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glGetShaderPrecisionFormat(shadertype,precisiontype:Cardinal;range,precision:PInteger);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glGetShaderSource(shader:Cardinal;bufSize:Integer;length:PInteger;source:PAnsiChar);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 function glGetString(name:Cardinal):PByte;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
@@ -441,7 +441,7 @@ procedure glStencilMask(mask:Cardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$
 procedure glStencilMaskSeparate(face,mask:Cardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glStencilOp(fail,zfail,zpass:Cardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glStencilOpSeparate(face,sfail,dpfail,dppass:Cardinal);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
-procedure glTexImage2D(target:Cardinal;level,internalformat,width,height,border:Integer;format:Cardinal;&type:Cardinal;const pixels:Pointer);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
+procedure glTexImage2D(target:Cardinal;level,internalformat,width,height,border:Integer;format:Cardinal;&type:Cardinal;var pixels);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glTexParameterf(target,pname:Cardinal;param:Single);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glTexParameterfv(target,pname:Cardinal;const params:PSingle);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glTexParameteri(target,pname:Cardinal;param:Integer);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
