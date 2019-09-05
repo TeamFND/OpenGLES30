@@ -400,8 +400,8 @@ function glGetError():Cardinal;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}ex
 procedure glGetFloatv(pname:Cardinal;data:PSingle);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glGetFramebufferAttachmentParameteriv(target,attachment,pname:Cardinal;params:PInteger);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glGetIntegerv(pname:Cardinal;data:PInteger);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
-procedure glGetProgramiv(&program,pname:Cardinal;params:PInteger);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
-procedure glGetProgramInfoLog(&program:Cardinal;bufSize:Integer;length:PInteger;infoLog:PAnsiChar);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
+procedure glGetProgramiv(&program,pname:Cardinal;var params:Integer);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
+procedure glGetProgramInfoLog(&program:Cardinal;bufSize:Integer;var length:Integer;var infoLog);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glGetRenderbufferParameteriv(target,pname:Cardinal;params:PInteger);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glGetShaderiv(shader,pname:Cardinal;var params);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
 procedure glGetShaderInfoLog(shader:Cardinal;bufSize:Integer;var length:Integer;var infoLog);{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}external OpenGLES3Lib;
